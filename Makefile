@@ -19,21 +19,23 @@ export BROWSER_PYSCRIPT
 
 BROWSER := python -c "$$BROWSER_PYSCRIPT"
 
-.PHONY: docs clean
+.PHONY: docs clean clean-test test
 
 help:
 	@echo "Please use 'make <target>' where <target> is one of"
 	@echo "   clean"
-	@echo "   clean-build   to clean the build directory of any leftovers."
+	@echo "   clean-build		to clean the build directory of any leftovers."
 	@echo "   clean-docs"
-	@echo "   collect  	to collect all required files to the build directory."
-	@echo "   compile 	to compile file that needs to be shipped as a binary."
-	@echo "   develop       to install (or update) all packages required for development"
-	@echo "   dist          to package a release as a ready to deploy extension archive"
-	@echo "   open-docs     to build and open the documentation"
-	@echo "   test-docs     to run automated tests on the documentation."
+	@echo "	  clean-test		to clean all temporary data generate by tests."
+	@echo "   collect			to collect all required files to the build directory."
+	@echo "   coverage          to compute coverage and open html report in a browser."
+	@echo "   compile			to compile file that needs to be shipped as a binary."
+	@echo "   develop			to install (or update) all packages required for development"
+	@echo "   dist				to package a release as a ready to deploy extension archive"
+	@echo "   open-docs			to build and open the documentation"
+	@echo "   test-docs			to run automated tests on the documentation."
 
-clean: clean-build clean-docs clean-test-docs
+clean: clean-build clean-docs clean-test clean-test
 	rm -f dist/*
 
 clean-build:
@@ -42,8 +44,10 @@ clean-build:
 clean-docs:
 	$(MAKE) -C docs clean SPHINX_BUILDDIR=$(SPHINX_BUILDDIR)
 
-clean-test-docs:
+clean-test:
 	$(MAKE) -C docs clean SPHINX_BUILDDIR=$(SPHINX_TEST_SPHINX_BUILDDIR)
+	rm -fr tests/babel
+	rm -fr coverage
 
 collect:
 	mkdir -p build
@@ -53,6 +57,9 @@ collect:
 compile:
 	glib-compile-schemas $(BUILDDIR)/schemas
 	find $(BUILDDIR) -name \*.po -execdir msgfmt hamster-shell-extension.po -o hamster-shell-extension.mo \;
+
+coverage: test
+	$(BROWSER) coverge/html-coverage/index.html
 
 develop:
 	pip install -U pip setuptools wheel
@@ -71,6 +78,12 @@ docs:
 open-docs: docs
 	$(BROWSER) docs/_build/html/index.html
 
+test:
+	grunt
+
+test-all: test-docs test
+
 test-docs:
 	make docs SPHINX_BUILDDIR=$(SPHINX_TEST_SPHINX_BUILDDIR) SPHINXOPTS='-W'
 	make -C docs linkcheck SPHINX_BUILDDIR=$(SPHINX_TEST_SPHINX_BUILDDIR)
+

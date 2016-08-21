@@ -1,2 +1,5 @@
 docs/_test_build
 docs/_build
+coverage
+tests/babel
+

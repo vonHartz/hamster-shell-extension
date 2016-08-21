@@ -1,0 +1,36 @@
+{
+  "name": "hamster-shell-extension",
+  "version": "0.10.0",
+  "description": "A GNOME-Shell extension for the 'Hamster' time tracker.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "dependencies": {
+    "qunit": "^0.9.1",
+    "qunitjs": "^2.0.1"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.13.2",
+    "grunt": "^0.4.5",
+    "grunt-babel": "^6.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-qunit": "^1.2.0",
+    "grunt-qunit-istanbul": "^0.6.0",
+    "qunit": "^0.9.1"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/projecthamster/shell-extension.git"
+  },
+  "author": "Eric Goller",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/projecthamster/shell-extension/issues"
+  },
+  "homepage": "https://github.com/projecthamster/shell-extension#readme"
+}

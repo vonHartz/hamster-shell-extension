@@ -32,6 +32,7 @@ help:
 	@echo "   dist          to package a release as a ready to deploy extension archive"
 	@echo "   open-docs     to build and open the documentation"
 	@echo "   test-docs     to run automated tests on the documentation."
+	@echo "   install       to install the widget"
 
 clean: clean-build clean-docs clean-test-docs
 	rm -f dist/*
@@ -76,3 +77,7 @@ open-docs: docs
 test-docs:
 	make docs SPHINX_BUILDDIR=$(SPHINX_TEST_SPHINX_BUILDDIR) SPHINXOPTS='-W'
 	make -C docs linkcheck SPHINX_BUILDDIR=$(SPHINX_TEST_SPHINX_BUILDDIR)
+
+install: clean-build collect compile
+	mkdir -p $(HOME)/.local/share/gnome-shell/extensions/hamster@projecthamster.wordpress.com ;
+	cp -r $(BUILDDIR)/* $(HOME)/.local/share/gnome-shell/extensions/hamster@projecthamster.wordpress.com ;

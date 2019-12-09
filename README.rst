@@ -2,8 +2,10 @@ Fixed Hamster shell exteion for Gnome shell version 3.30
 ========================================================
 
 To use:
-* install current hamster version from the official repo
-* install hamster shell extension via:
+
+- install current hamster version from the official repo
+
+- install hamster shell extension via:
 
     git clone git@github.com:vonHartz/hamster-shell-extension.git
 

@@ -56,7 +56,7 @@ collect:
 	mkdir -p $(BUILDDIR)
 	cp -R extension/* $(BUILDDIR)
 	cp -R data/* $(BUILDDIR)
-	wget https://gitlab.gnome.org/GNOME/gnome-shell-extensions/raw/master/lib/convenience.js -O $(BUILDDIR)/convenience.js
+	wget https://gitlab.gnome.org/GNOME/gnome-shell-extensions/raw/47beeb1a8e9afba410dc7587cb40f7fb00f5e3a7/lib/convenience.js -O $(BUILDDIR)/convenience.js
 
 compile: collect
 	glib-compile-schemas $(BUILDDIR)/schemas

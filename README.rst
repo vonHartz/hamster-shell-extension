@@ -1,4 +1,4 @@
-Fixed Hamster shell exteion for Gnome shell version 3.30
+Fixed Hamster shell extension for Gnome shell version 3.30
 ========================================================
 
 To use:
@@ -6,6 +6,7 @@ To use:
 - install current hamster version from the official repo
 
 - install hamster shell extension via:
+
 
     git clone git@github.com:vonHartz/hamster-shell-extension.git
 
@@ -20,6 +21,8 @@ Build a fresh distribution package::
 Unpack the created zip in the ``dist`` folder to a new directory named like the zip (without the ending) in ``~/.local/share/gnome-shell/extensions/``. 
 
 Restart the gnome session and activate the extension using the tweak tool.
+
+
 
 Hamster Gnome Shell extension
 ===============================
